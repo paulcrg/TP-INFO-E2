@@ -64,6 +64,10 @@ def ex05():
         q = q//2
     print(f"Le nombre décimal {n} est égal à {res[::-1]} en binaire")
 
+#Exercice 06
+
+#Voir fichier revision-ex1.py
+
 #Exercice 07
 
 from random import *
@@ -119,4 +123,3 @@ def ex07():
     resultat = d + '-' + m + '-' + f
     print(f"Voici votre plaque d'immatriculation : {resultat}")
 
-ex07()
