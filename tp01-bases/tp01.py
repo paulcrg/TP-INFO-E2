@@ -52,3 +52,17 @@ def ex04(n):
         raise ValueError("Nombre négatif ou nul")
 
 print(ex04(1000))
+
+#Exercice 05
+
+def ex05():
+    n = int(input("Saisir le nombre décimal que vous souhaitez convertir : "))
+    q = n
+    res = ''
+    while q!=0:
+        r = q%2
+        res+= str(r)
+        q = q//2
+    print(f"Le nombre décimal {n} est égal à {res[::-1]} en binaire")
+
+ex05()
