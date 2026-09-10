@@ -12,4 +12,17 @@ def choix():
     choix = int(input("Choix utilisateur : "))
     if choix == 1:
         ex01()
-choix()
+    elif choix == 2:
+        ex02()
+    elif choix == 3:
+        ex03()
+    elif choix == 4:
+        ex04()
+    elif choix == 5:
+        ex05()
+    elif choix == 6:
+        ex06()
+    elif choix == 7:
+        ex07()
+    else:
+    print("Choix invalide")
