@@ -37,4 +37,18 @@ def ex03():
         age = age-2
         print(f"Vous avez {(age*4)+deux} ans en années canines")
 
-print(round(10.0,1))
+#Exercice 04
+
+def ex04(n):
+    if n > 0:
+        pi = 3
+        for i in range(1, n+1):
+            if i%2==1:
+                pi += 4/((2*i)*(2*i+1)*(2*i+2))
+            else:
+                pi -=4/((2*i)*(2*i+1)*(2*i+2))
+        return pi
+    else:
+        raise ValueError("Nombre négatif ou nul")
+
+print(ex04(1000))
