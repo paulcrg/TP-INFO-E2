@@ -25,6 +25,16 @@ def ex02():
     print("Minimum des nombre saisis :", mini)
     print("Maximum des nombres saisis", maxi)
     print("Moyenne des nombre saisis", moyenne)
-    
 
-ex02()
+#Exercice 03
+
+def ex03():
+    age = int(input("Saisir votre âge : "))
+    if age >= 2:
+        print(f"Vous avez {age*10.5} ans en années canines")
+    else:
+        deux = 10.5*2
+        age = age-2
+        print(f"Vous avez {(age*4)+deux} ans en années canines")
+
+print(round(10.0,1))
