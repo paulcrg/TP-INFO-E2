@@ -1,6 +1,6 @@
 #Exercice 06 - TP 01
 #Paul Crémoux Guiblain
-
+print(chr(65))
 etat = 1
 while etat == 1:
     op = input("type d'opération souhaité : (a)ddition, (s)oustraction, (m)ultiplication et (d)ivision :")

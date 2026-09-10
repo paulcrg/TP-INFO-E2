@@ -51,7 +51,6 @@ def ex04(n):
     else:
         raise ValueError("Nombre négatif ou nul")
 
-print(ex04(1000))
 
 #Exercice 05
 
@@ -65,4 +64,59 @@ def ex05():
         q = q//2
     print(f"Le nombre décimal {n} est égal à {res[::-1]} en binaire")
 
-ex05()
+#Exercice 07
+
+from random import *
+
+def ex07():
+    milieu = randint(1,999)
+    m = ''
+    if milieu < 10:
+        m += '00' + str(milieu)
+    elif milieu < 100:
+        m += '0' + str(milieu)
+    else:
+        m+= str(milieu)
+
+    n = randint(65,90)
+    l1 = chr(n)
+    while l1 in ['I','O', 'U']:
+        n = randint(65,90)
+        l1 = chr(n)
+
+    n = randint(65,90)
+    l2 = chr(n)
+    while l2 in ['I','O', 'U']:
+        n = randint(65,90)
+        l2 = chr(n)
+
+    d = '' + str(l1) + str(l2)
+
+    while d in ['SS']:
+        n = randint(65,90)
+        l2 = chr(n)
+        d = '' + str(l1) + str(l2)
+
+    n = randint(65,90)
+    l3 = chr(n)
+    while l3 in ['I','O', 'U']:
+        n = randint(65,90)
+        l3 = chr(n)
+
+    n = randint(65,90)
+    l4 = chr(n)
+    while l4 in ['I','O', 'U']:
+        n = randint(65,90)
+        l4 = chr(n)
+    
+    f = '' + str(l3) + str(l4)
+    
+    while f in ['SS']:
+        n = randint(65,90)
+        l4 = chr(n)
+        f = '' + str(l3) + str(l4)
+
+    resultat = d + '-' + m + '-' + f
+    print(f"Voici votre plaque d'immatriculation : {resultat}")
+
+ex07()
