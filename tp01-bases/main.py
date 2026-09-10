@@ -25,4 +25,4 @@ def choix():
     elif choix == 7:
         ex07()
     else:
-    print("Choix invalide")
+        print("Choix invalide")
