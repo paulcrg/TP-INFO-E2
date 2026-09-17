@@ -29,19 +29,14 @@ def choix():
 
 
 def fizz_buzz():
-    liste15 = []
-    for i in range(1,16):
-        liste15.append(i)
     res = ''
-    for n in range(1, len(liste15)+1):
-        if n % 3 == 0 & n % 5 == 0:
+    for n in range(1, 16):
+        if n % 3 == 0 and n % 5 == 0:
             res += "Fizzbuzz, "
         elif n % 3 == 0:
-            res += 'Fizz, '
+            res += "Fizz, "
         elif n % 5 == 0:
             res += "Buzz, "
         else:
             res += str(n) + ", "
     return res
-
-print(fizz_buzz())
