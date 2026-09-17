@@ -1,6 +1,8 @@
 #Crémoux Guiblain Paul - E2 Dijon
 #TP 02 - Collections
 
+from random import *
+
 #Exercice 01
 
 import copy
@@ -65,3 +67,45 @@ classDict["class"]["average_grade"] = comptall/comptlen
 
 #Q8
 print(classDict)
+
+#Exercice 03
+def exo03():
+    n = int(input("Combien de valeurs voulez vous dans votre tableau : "))
+    assert 2<n<100
+    tableau = []
+    deja_vu = []
+    for i in range(n):
+        tableau.append(randint(0,500))
+    for elt in tableau:
+        if elt in deja_vu:
+            print(f"Le nombre {elt} est déja dans le tableau : {deja_vu}")
+            raise ValueError
+        deja_vu.append(elt)
+    print("Toutes les valeurs sont différentes !")
+
+#Exercice 04
+
+def calculScore(liste):
+    pile = []
+    indd = -1
+    res = 0
+    for i in range(len(liste)):
+        if liste[i].isdigit():
+            pile.append(int(liste[i]))
+            indd +=1
+        elif liste[i] == 'C':
+            pile.pop()
+            indd -=1
+        elif liste[i] == 'D':
+            pile.append(pile[indd]*2)
+            indd +=1
+        elif liste[i] == '+':
+            ajout = pile[indd] + pile[indd-1]
+            pile.append(ajout)
+            indd+=1
+    for id in range(len(pile)):
+        res += pile[id]
+    print(f"La somme des points est de {res}")
+
+p = ["10","2","C","D","+"]
+print(calculScore(p))
