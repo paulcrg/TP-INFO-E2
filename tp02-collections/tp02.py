@@ -49,5 +49,19 @@ classDict["class"]["student"].append({"name": "Ted" ,
 }
 )
 #Q6
-moyenne = 
+teddy = 0
+for notes in classDict["class"]["student"][1]["marks"].values():
+    teddy += notes
+print(teddy/len(classDict["class"]["student"][1]["marks"].values()))
+#Q7
+comptall = 0
+comptlen = 0
+for std in classDict["class"]["student"]:
+    for grades in std["marks"].values():
+        comptall += grades
+        comptlen += 1
 
+classDict["class"]["average_grade"] = comptall/comptlen
+
+#Q8
+print(classDict)
