@@ -183,7 +183,26 @@ def addition(p1, p2):
 def multiplication(p,m):
     res = deque()                
     for i in range(len(p)):
-        res.append(p[i]*m)
+        nombre = int(p[i])*int(m[0])
+        res.append(nombre)
     return affn(res)
 print(multiplication([1,2],[2]))
-        
+
+#Exercice 06
+import requests 
+
+def get_university_data(country = "Norway"):
+    url = f"http://universities.hipolabs.com/search?country={country}"
+
+    rawdata = requests.get(url)
+
+    if not rawdata:
+        raise Exception
+
+    data = rawdata.json()
+    return data
+
+
+if __name__ == "__main__":
+    uni_data = get_university_data("Norway")
+    print(uni_data)
