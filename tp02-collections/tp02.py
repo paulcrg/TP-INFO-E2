@@ -108,4 +108,82 @@ def calculScore(liste):
     print(f"La somme des points est de {res}")
 
 p = ["10","2","C","D","+"]
-print(calculScore(p))
+calculScore(p)
+
+#Exercice 05
+from collections import deque
+
+#Q1
+def coeff(p):
+    coeff = int(input("Saisir le coeff que voulez rajouter au polynôme : "))
+    r = deque(p)
+    r.appendleft(coeff)
+    return r
+
+#Q2
+def saisie():
+    n = int(input("Combien de coefficients voulez vous saisir ? "))
+    p = deque()
+    for i in range(n):
+        coeff = int(input("Saisir un coeff :"))
+        p.append(coeff)
+    return p
+
+#Q3
+def affichage():
+    s = saisie()
+    res =''
+    deg = len(s)
+    for i in range(len(s)):
+        if (deg-i-1) != 0:
+            res += str(s[i]) + 'x' + str(deg-i-1) + ' ' + '+' + ' '
+        else:
+            res += str(s[i])
+    return res
+
+def affn(n):
+    res =''
+    deg = len(n)
+    for i in range(len(n)):
+            if (deg-i-1) != 0:
+                res += str(n[i]) + 'x' + str(deg-i-1) + ' ' + '+' + ' '
+            else:
+                res += str(n[i])
+    return res
+
+#Q4
+def destruction(p):
+    p.clear()
+    return p
+
+#Q5
+def addition(p1, p2):
+    res = deque()
+
+    if len(p1) >= len(p2):
+        sup = p1
+        inf = p2
+    else:
+        sup = p2
+        inf = p1
+
+    delta = len(sup) - len(inf)
+
+
+    for i in range(delta):
+        res.append(sup[i])
+
+    for i in range(delta, len(sup)):
+        res.append(sup[i] + inf[i - delta])
+
+    return affn(res)
+
+#Q6
+
+def multiplication(p,m):
+    res = deque()                
+    for i in range(len(p)):
+        res.append(p[i]*m)
+    return affn(res)
+print(multiplication([1,2],[2]))
+        
