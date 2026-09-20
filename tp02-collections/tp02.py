@@ -189,20 +189,53 @@ def multiplication(p,m):
 print(multiplication([1,2],[2]))
 
 #Exercice 06
-import requests 
-
-def get_university_data(country = "Norway"):
+import requests
+ 
+ 
+def get_university_data(country="France"):
+    """Récupère la liste des universités d'un pays via l'API hipolabs."""
     url = f"http://universities.hipolabs.com/search?country={country}"
-
+ 
     rawdata = requests.get(url)
-
+ 
     if not rawdata:
-        raise Exception
-
+        raise Exception("Impossible de récupérer les données depuis l'API")
+ 
     data = rawdata.json()
     return data
-
-
+ 
+ 
+def filtrer_sans_etat(universites):
+    """Garde uniquement les universités qui ont une info d'état/région renseignée."""
+    return [u for u in universites if u.get("state-province")]
+ 
+ 
+def trier_par_etat(universites):
+    """Trie la liste d'universités par ordre alphabétique de leur état/région."""
+    return sorted(universites, key=lambda u: u["state-province"])
+ 
+ 
+def afficher_universites(universites):
+    """Affiche les universités de façon lisible pour un humain."""
+    print(f"{len(universites)} université(s) trouvée(s) avec un état/région renseigné\n")
+ 
+    for u in universites:
+        nom = u.get("name", "Nom inconnu")
+        etat = u.get("state-province", "Non renseigné")
+        sites = u.get("web_pages", [])
+        site = sites[0] if sites else "Aucun site renseigné"
+ 
+        print(f"Nom      : {nom}")
+        print(f"État     : {etat}")
+        print(f"Site web : {site}")
+        print("-" * 40)
+ 
+ 
 if __name__ == "__main__":
-    uni_data = get_university_data("Norway")
-    print(uni_data)
+    pays = "France"
+ 
+    uni_data = get_university_data(pays)
+    uni_filtrees = filtrer_sans_etat(uni_data)
+    uni_triees = trier_par_etat(uni_filtrees)
+ 
+    afficher_universites(uni_triees)
