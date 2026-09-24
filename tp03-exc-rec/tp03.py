@@ -19,14 +19,41 @@ def syra(n):
     return n
 
 #Exercice 04
-from random import *
-nombre_ligne = 0
-liste = []
-with open('dic.txt', 'r+', encoding ='utf8') as f:
-    for lignes in f:
-        liste.append(lignes.upper())
-        nombre_ligne += 1
-print(liste[3])
+from random import randint
+from exceptions import LettreDejaSoumiseError
+
+with open('dic.txt', 'r', encoding='utf8') as f:
+    liste = [ligne.strip().upper() for ligne in f]
+
 def pendu():
-    nbre = randint(0,nombre_ligne)
-print(pendu())
+    mot = liste[randint(0, len(liste) - 1)]
+    vies = 7
+    soumis = []
+    lettres_trouvees = set()
+
+    while vies > 0:
+        masque = ''.join(lettre if lettre in lettres_trouvees else '_' for lettre in mot)
+        print(masque, f"(vies restantes : {vies})")
+
+        if set(mot) <= lettres_trouvees:
+            print("Bravo, vous avez gagné !")
+            return
+
+        choix = input("Proposez une lettre : ").strip().upper()
+
+        try:
+            if choix in soumis:
+                raise LettreDejaSoumiseError(f"Vous avez déjà proposé '{choix}' !")
+            soumis.append(choix)
+
+            if choix in mot:
+                lettres_trouvees.add(choix)
+            else:
+                vies -= 1
+                print(f"Raté, il vous reste {vies} vie(s).")
+        except LettreDejaSoumiseError as e:
+            print(e)
+
+    print(f"Perdu ! Le mot était : {mot}")
+
+pendu()
