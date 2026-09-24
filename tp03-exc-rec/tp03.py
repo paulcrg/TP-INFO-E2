@@ -18,4 +18,15 @@ def syra(n):
         return syra(n)
     return n
 
-print(syra(89))
+#Exercice 04
+from random import *
+nombre_ligne = 0
+liste = []
+with open('dic.txt', 'r+', encoding ='utf8') as f:
+    for lignes in f:
+        liste.append(lignes.upper())
+        nombre_ligne += 1
+print(liste[3])
+def pendu():
+    nbre = randint(0,nombre_ligne)
+print(pendu())

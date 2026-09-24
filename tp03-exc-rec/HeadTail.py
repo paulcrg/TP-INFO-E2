@@ -1,28 +1,34 @@
-def head_tail(choix,nombre,chemin):
-    if choix == 'head':
-        n = 0
-    elif choix == 'tail':
-        n = -1
-    else:
-        raise ValueError
+import sys
+
+try:
+    choix = sys.argv[1]
+    nombre_str = sys.argv[2]
+    chemin = sys.argv[3]
+
+    if choix not in ('head', 'tail'):
+        raise ValueError(f"Premier paramètre invalide : '{choix}' (attendu 'head' ou 'tail')")
+
+    nombre = int(nombre_str)
     if nombre < 0:
-        raise ValueError
+        raise ValueError(f"Le nombre de lignes doit être positif, reçu : {nombre}")
+
     try:
-        with open(chemin,'r+',encoding = 'utf8') as fichier:
-            for i in range(nombre):
-                if n == 0:
-                    fichier.readline()
-                elif n ==-1:
-                    fichier.readline(-1)
-    except:
-        return -1
+        with open(chemin, 'r', encoding='utf8') as fichier:
+            lignes = fichier.readlines()
+    except IOError:
+        raise IOError(f"Impossible de trouver ou d'ouvrir le fichier : '{chemin}'")
 
-print(head_tail('head',15,'dic.txt'))
+    if choix == 'head':
+        selection = lignes[:nombre]
+    else:
+        selection = lignes[-nombre:] if nombre > 0 else []
 
+    for ligne in selection:
+        print(ligne, end='')
 
-
-
-
-
-if __name__ == 'main':
-    head_tail(head,15,'dic.txt')
+except IndexError:
+    print("Usage : ./HeadTail.py head/tail nombre chemin_fichier")
+except ValueError as e:
+    print(f"Erreur de valeur : {e}")
+except IOError as e:
+    print(f"Erreur de fichier : {e}")
