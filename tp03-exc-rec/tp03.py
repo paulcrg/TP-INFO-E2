@@ -56,4 +56,19 @@ def pendu():
 
     print(f"Perdu ! Le mot était : {mot}")
 
-pendu()
+#Exercice 05
+f = open("hanoi.txt", "w", encoding="utf8")
+def hanoi(n, depart, intermediaire, arrivee, f):
+    if n == 1:
+        f.write(f"{depart} -> {arrivee} \n")
+        
+
+    else:
+        hanoi(n-1, depart, arrivee, intermediaire, f)
+
+        f.write(f"{depart} -> {arrivee} \n")
+
+        hanoi(n-1, intermediaire, depart, arrivee, f)
+f.close()
+
+hanoi(3, "A", "B", "C", f)
