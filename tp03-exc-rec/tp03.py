@@ -69,6 +69,7 @@ def hanoi(n, depart, intermediaire, arrivee, f):
         f.write(f"{depart} -> {arrivee} \n")
 
         hanoi(n-1, intermediaire, depart, arrivee, f)
-f.close()
 
-hanoi(3, "A", "B", "C", f)
+hanoi(8, "A", "B", "C", f)
+
+f.close()
